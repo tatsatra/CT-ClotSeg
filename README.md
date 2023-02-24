@@ -16,10 +16,8 @@ Nonetheless, the tool can take in any sized 3D volumes of CTA/NCCT as inputs as 
 ## Training setup
 After the pre-processing is complete, the process that our tool does, can be described as follows:
 * Dividing data in training, validation and testing cohorts
-If already done previously, can be turned on or off by changing the following in the '''config.py''' file
-'''
-TRAIN_TEST_SPLIT == True
-'''
+If already done previously, can be turned on or off by changing the following in the ```config.py``` file
+```TRAIN_TEST_SPLIT == True```
 * Extracting 2D slices of CTA, NCCT and masks for 2D model training
 * Data augmentation
 * Model compilation
