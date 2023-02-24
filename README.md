@@ -17,13 +17,11 @@ Nonetheless, the tool can take in any sized 3D volumes of CTA/NCCT as inputs as 
 After the pre-processing is complete, the process that our tool does, can be described as follows:
 
 ### Dividing data in training, validation and testing cohorts
-Splits the dataset randomly into training, valdiaiton and testing cohorts. The percentages can be set by users from the ```config.py``` file. 
-```TRAIN_PERC = 0.6```
-and
-```VAL_PERC = 0.2```
-The testing percentage is computed as the complementary of the training and validation percentages. Also, if the splitting of data is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file
-```TRAIN_TEST_SPLIT == True```
-* Extracting 2D slices of CTA, NCCT and masks for 2D model training
+Splits the dataset randomly into training, valdiaiton and testing cohorts. The percentages can be set by users from the ```config.py``` file: ```TRAIN_PERC = 0.6``` and ```VAL_PERC = 0.2```.
+The testing percentage is computed as the complementary of the training and validation percentages. Also, if the splitting of data is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```TRAIN_TEST_SPLIT == True```.
+
+### Extracting 2D slices of CTA, NCCT and masks for 2D model training
+Extcts 2D slices from the 3D volumes of the CTA/NCCT images and the corresponding masks. This is done separately for the training and validation cohorts. Slicing of the testing cohort is done on teh fly in the testing module of the tool. 
 * Data augmentation
 * Model compilation
 * Model training/validation
