@@ -4,3 +4,4 @@ This repositary provides the code for training of deep-learning models for the a
 
 
 The directory structure expected for the training is expected as follows:
+# The data files should be in folder "my folder"
