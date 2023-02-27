@@ -24,6 +24,10 @@ The testing percentage is computed as the complementary of the training and vali
 ### Extracting 2D slices of CTA, NCCT and masks for 2D model training
 Extracts 2D slices from the 3D volumes of the CTA/NCCT images and the corresponding masks. This is done separately for the training and validation cohorts. Slicing of the testing cohort is done on the fly in the testing module of the tool. If the slicing of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```. 
 
+📦myModels
+ ┣ 📜DataGeneratorUNet2D.py
+ ┗ 📜unet2D.py
+
 ### Training/Validation 2D slice augmentation
 Following the slicing of the images and masks, the 2D slices are augmented using the ```albumentations``` package available [here](https://albumentations.ai/). The following augmentations were allowed for the aimges and the masks (where appropriate):
 * HorizontalFlip,
