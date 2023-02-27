@@ -11,18 +11,18 @@ This repositary provides the code for training of deep-learning models for the a
 
 ## Inputs
 The NCCT/CTA 3D volumes and the correspinding masks as expected as a python binary file  in the ```.npy``` format. The expected directory and file nomenmclature is as follows:  
-📦DL_vol_files          #Put your Images here  
-  ┗ 📂binary  
-    ┣ 📜CS1_CTA_Binary.npy  
-    ┣ 📜CS1_NCCT_Reg_Binary.npy  
-    ┣ 📜CS2_CTA_Binary.npy  
-    ┣ 📜CS2_NCCT_Reg_Binary.npy  
-    ┗ ...    
   
-📦DL_seg_files          #Put your Masks here  
+📦**DL_vol_files**          ```#Put your Images here```  
   ┗ 📂binary  
-    ┣ 📜CS1_seg_corrected_binary.npy  
-    ┣ 📜CS2_seg_corrected_binary.npy  
+    ┣ 📜*CS1_CTA_Binary.npy*  
+    ┣ 📜*CS1_NCCT_Reg_Binary.npy*  
+    ┣ 📜*CS2_CTA_Binary.npy*  
+    ┣ 📜*CS2_NCCT_Reg_Binary.npy*  
+    ┗ ...    
+📦**DL_seg_files**          ```#Put your Masks here```  
+  ┗ 📂binary  
+    ┣ 📜*CS1_seg_corrected_binary.npy*  
+    ┣ 📜*CS2_seg_corrected_binary.npy*  
     ┗ ...    
    
 
