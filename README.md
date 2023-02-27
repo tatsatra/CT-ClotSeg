@@ -14,16 +14,16 @@ The NCCT/CTA 3D volumes and the correspinding masks as expected as a python bina
   
 📦**DL_vol_files**          ```#Put your Images here```  
   ┗ 📂binary  
-    ┣ 📜*CS1_CTA_Binary.npy*  
-    ┣ 📜*CS1_NCCT_Reg_Binary.npy*  
-    ┣ 📜*CS2_CTA_Binary.npy*  
-    ┣ 📜*CS2_NCCT_Reg_Binary.npy*  
-    ┗ ...    
+&ensp &ensp    ┣ 📜*CS1_CTA_Binary.npy*  
+&ensp &ensp    ┣ 📜*CS1_NCCT_Reg_Binary.npy*  
+&ensp &ensp    ┣ 📜*CS2_CTA_Binary.npy*  
+&ensp &ensp    ┣ 📜*CS2_NCCT_Reg_Binary.npy*  
+&ensp &ensp    ┗ ...    
 📦**DL_seg_files**          ```#Put your Masks here```  
   ┗ 📂binary  
-    ┣ 📜*CS1_seg_corrected_binary.npy*  
-    ┣ 📜*CS2_seg_corrected_binary.npy*  
-    ┗ ...    
+&ensp &ensp    ┣ 📜*CS1_seg_corrected_binary.npy*  
+&ensp &ensp    ┣ 📜*CS2_seg_corrected_binary.npy*  
+&ensp &ensp    ┗ ...    
    
 
 ## Pre-processing
