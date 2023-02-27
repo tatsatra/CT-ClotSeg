@@ -38,7 +38,7 @@ With the pre-processed inputs, the model training that our tool (```training.py`
 Splits the dataset randomly into training, valdiaiton and testing cohorts. The percentages can be set by users from the ```config.py``` file: ```TRAIN_PERC = 0.6``` and ```VAL_PERC = 0.2```.  
 The testing percentage is computed as the complementary of the training and validation percentages. Also, if the splitting of data is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```TRAIN_TEST_SPLIT == True```. The outputs of the data splitting is stored with following directory structure,  
   
-📦**Processed**
+📦**Processed**  
   ┗ 📂**Original**  
 &ensp; &ensp;    ┣ 📂Training  
 &ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
@@ -54,7 +54,7 @@ The testing percentage is computed as the complementary of the training and vali
 ### Extracting 2D slices of CTA, NCCT and masks for 2D model training
 Extracts 2D slices from the 3D volumes of the CTA/NCCT images and the corresponding masks. This is done separately for the training and validation cohorts. Slicing of the testing cohort is done on the fly in the testing module of the tool. If the slicing of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```. The outputs of the slicing is stored in the following data structure,  
   
-📦**Processed**
+📦**Processed**  
   ┗ 📂**Original**  
 &ensp; &ensp;    ┣ 📂Training  
 &ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
@@ -74,7 +74,7 @@ Following the slicing of the images and masks, the 2D slices are augmented using
   
 The overall probability of allowing an image to be augmented was set to ```p=0.80```. The number of samples (target) for the training and validation augmentations can be set in the ```config.py``` file as well under the variable names ```TARGET_SAMPLE_SIZE_AUG_TRAIN``` and ```TARGET_SAMPLE_SIZE_AUG_VAL``` respectively. If the augmentation of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```. The outputs of the augmentation is stored in the following data structure,  
   
-📦**Processed**
+📦**Processed**  
   ┗ 📂**Augmented**  
 &ensp; &ensp;    ┣ 📂Training  
 &ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
