@@ -82,11 +82,10 @@ The overall probability of allowing an image to be augmented was set to ```p=0.8
 &ensp; &ensp;    ┗ 📂Validation  
 &ensp; &ensp; &ensp; &ensp;    ┣ 📂images  
 &ensp; &ensp; &ensp; &ensp;    ┗ 📂masks   
+  
+### Model training and validation
+  
 
-* Data augmentation
-* Model compilation
-* Model training/validation
-* Model testing
 
 ## Testing setup
 coming soon!
@@ -94,4 +93,3 @@ coming soon!
 ## Dependencies
 Coming soon!
 
-The directory structure expected for the training is expected as follows:
