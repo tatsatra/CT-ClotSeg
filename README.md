@@ -38,66 +38,31 @@ With the pre-processed inputs, the model training that our tool (```training.py`
 Splits the dataset randomly into training, valdiaiton and testing cohorts. The percentages can be set by users from the ```config.py``` file: ```TRAIN_PERC = 0.6``` and ```VAL_PERC = 0.2```.  
 The testing percentage is computed as the complementary of the training and validation percentages. Also, if the splitting of data is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```TRAIN_TEST_SPLIT == True```. The outputs of the data splitting is stored with following directory structure,  
   
-📦Processed  
-  ┗ 📂Original  
-&ensp; &ensp;    ┣ 📂Testing  
-&ensp; &ensp; ┃ &ensp;    ┣ 📂images  
-&ensp; &ensp; ┃ &ensp;    ┗ 📂masks   
+📦**Processed**
+  ┗ 📂**Original**  
 &ensp; &ensp;    ┣ 📂Training  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
 &ensp; &ensp;    ┣ 📂Validation  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+&ensp; &ensp;    ┗ 📂Testing  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+  
   
 ### Extracting 2D slices of CTA, NCCT and masks for 2D model training
 Extracts 2D slices from the 3D volumes of the CTA/NCCT images and the corresponding masks. This is done separately for the training and validation cohorts. Slicing of the testing cohort is done on the fly in the testing module of the tool. If the slicing of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```. The outputs of the slicing is stored in the following data structure,  
-
-
-📦myModels  
- ┣ 📜DataGeneratorUNet2D.py  
- ┗ 📜unet2D.py  
-
-📦DL_vol_files          #Put your Images here  
-  ┗ 📂binary  
-    ┣ 📜CS1_CTA_Binary.npy  
-    ┣ 📜CS1_NCCT_Reg_Binary.npy  
-    ┣ 📜CS2_CTA_Binary.npy  
-    ┣ 📜CS2_NCCT_Reg_Binary.npy  
-    ┗ ...    
   
-📦DL_seg_files          #Put your Masks here  
-  ┗ 📂binary  
-    ┣ 📜CS1_seg_corrected_binary.npy  
-    ┣ 📜CS2_seg_corrected_binary.npy  
-    ┗ ...    
-   
- 📦Processed  
- ┣ 📂Augmented  
- ┃ ┣ 📂Training  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
- ┃ ┗ 📂Validation  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
- ┣ 📂Original  
- ┃ ┣ 📂Testing  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
- ┃ ┣ 📂Training  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
- ┃ ┗ 📂Validation  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
- ┗ 📂Sliced  
- ┃ ┣ 📂Training  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
- ┃ ┗ 📂Validation  
- ┃ ┃ ┣ 📂images  
- ┃ ┃ ┗ 📂masks  
-
+📦**Processed**
+  ┗ 📂**Original**  
+&ensp; &ensp;    ┣ 📂Training  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+&ensp; &ensp;    ┣ 📂Validation  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+  
 ### Training/Validation 2D slice augmentation
 Following the slicing of the images and masks, the 2D slices are augmented using the ```albumentations``` package available [here](https://albumentations.ai/). The following augmentations were allowed for the aimges and the masks (where appropriate):
 * HorizontalFlip,
@@ -107,7 +72,16 @@ Following the slicing of the images and masks, the 2D slices are augmented using
 * AdvancedBlur,
 * CLAHE.  
   
-The overall probability of allowing an image to be augmented was set to ```p=0.80```. The number of samples (target) for the training and validation augmentations can be set in the ```config.py``` file as well under the variable names ```TARGET_SAMPLE_SIZE_AUG_TRAIN``` and ```TARGET_SAMPLE_SIZE_AUG_VAL``` respectively. If the augmentation of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```.
+The overall probability of allowing an image to be augmented was set to ```p=0.80```. The number of samples (target) for the training and validation augmentations can be set in the ```config.py``` file as well under the variable names ```TARGET_SAMPLE_SIZE_AUG_TRAIN``` and ```TARGET_SAMPLE_SIZE_AUG_VAL``` respectively. If the augmentation of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```. The outputs of the augmentation is stored in the following data structure,  
+  
+📦**Processed**
+  ┗ 📂**Augmented**  
+&ensp; &ensp;    ┣ 📂Training  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+&ensp; &ensp;    ┣ 📂Validation  
+&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
+&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
 
 * Data augmentation
 * Model compilation
