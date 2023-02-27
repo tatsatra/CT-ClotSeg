@@ -47,8 +47,8 @@ The testing percentage is computed as the complementary of the training and vali
 &ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
 &ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
 &ensp; &ensp;    ┗ 📂Testing  
-&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
-&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+&ensp; &ensp; &nbsp;    ┣ 📂images  
+&ensp; &ensp; &nbsp;    ┗ 📂masks   
   
   
 ### Extracting 2D slices of CTA, NCCT and masks for 2D model training
@@ -59,9 +59,9 @@ Extracts 2D slices from the 3D volumes of the CTA/NCCT images and the correspond
 &ensp; &ensp;    ┣ 📂Training  
 &ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
 &ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
-&ensp; &ensp;    ┣ 📂Validation  
-&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
-&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+&ensp; &ensp;    ┗ 📂Validation  
+&ensp; &ensp; &nbsp;    ┣ 📂images  
+&ensp; &ensp; &nbsp;    ┗ 📂masks   
   
 ### Training/Validation 2D slice augmentation
 Following the slicing of the images and masks, the 2D slices are augmented using the ```albumentations``` package available [here](https://albumentations.ai/). The following augmentations were allowed for the aimges and the masks (where appropriate):
@@ -79,9 +79,9 @@ The overall probability of allowing an image to be augmented was set to ```p=0.8
 &ensp; &ensp;    ┣ 📂Training  
 &ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
 &ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
-&ensp; &ensp;    ┣ 📂Validation  
-&ensp; &ensp; ┃ &nbsp;    ┣ 📂images  
-&ensp; &ensp; ┃ &nbsp;    ┗ 📂masks   
+&ensp; &ensp;    ┗ 📂Validation  
+&ensp; &ensp; &nbsp;    ┣ 📂images  
+&ensp; &ensp; &nbsp;    ┗ 📂masks   
 
 * Data augmentation
 * Model compilation
