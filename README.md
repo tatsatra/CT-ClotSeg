@@ -72,7 +72,7 @@ Following the slicing of the images and masks, the 2D slices are augmented using
 * AdvancedBlur,
 * CLAHE.  
   
-The overall probability of allowing an image to be augmented was set to ```p=0.80```. The number of samples (target) for the training and validation augmentations can be set in the ```config.py``` file as well under the variable names ```TARGET_SAMPLE_SIZE_AUG_TRAIN``` and ```TARGET_SAMPLE_SIZE_AUG_VAL``` respectively. If the augmentation of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```SLICE_EXTRACT == True```. The outputs of the augmentation is stored in the following data structure,  
+The overall probability of allowing an image to be augmented was set to ```p=0.80```. The number of samples (target) for the training and validation augmentations can be set in the ```config.py``` file as well under the variable names ```TARGET_SAMPLE_SIZE_AUG_TRAIN``` and ```TARGET_SAMPLE_SIZE_AUG_VAL``` respectively. If the augmentation of the images is not required again, as it was already done previously, it can be turned on/off by changing the following in the ```config.py``` file: ```DATA_AUG == True```. The outputs of the augmentation is stored in the following data structure,  
   
 📦**Processed**  
   ┗ 📂**Augmented**  
@@ -88,8 +88,8 @@ The overall probability of allowing an image to be augmented was set to ```p=0.8
 
 
 ## Testing setup
-coming soon!
+Testing module coming soon!
 
 ## Dependencies
-Coming soon!
-
+The libraries in the virtual environment used for running this code can be found in the ```requirements.txt``` file. The libraries can be installed using the following code:  
+```pip3 install -r path/to/requirements.txt```
