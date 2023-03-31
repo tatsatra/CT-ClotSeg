@@ -11,7 +11,9 @@ import config
 import random
 import pickle
 
-from utils import copyCohortDirs, sliceCohortImages, dataAug
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+
+from utils import copyCohortDirs, sliceCohortImages, dataAug, cpFiles
 
 import sys
 sys.path.insert(1, './myModels')
@@ -67,7 +69,38 @@ if config.DATA_AUG == True:
 
 if config.MODEL_TRAINING == True:
     
-    model = unet2D(LR = config.LEARNING_RATEà)
+    model = unet2D(LR = config.LEARNING_RATE)
+    
+    if not os.path.isdir(config.MODEL_OUT):
+        os.makedirs(config.MODEL_OUT)
+    
+    model_json = model.to_json()
+    with open( config.MODEL_OUT + 'Model.json', 'w' ) as json_file:
+        json_file.write(model_json)
+        
+    early_stop = EarlyStopping(monitor='loss',
+                               min_delta=0.001,
+                               patience=10,
+                               mode='min',
+                               verbose=1)
+        
+    checkpoint = ModelCheckpoint(config.MODEL_OUT + '/model_best_weights.h5',
+                                 monitor='val_loss',
+                                 verbose=1, 
+                                 save_best_only=True,
+                                 mode='min',
+                                 period=1)
+    
+    if not os.path.isdir(config.CKPT_OUT):
+        os.makedirs(config.CKPT_OUT)
+    
+    filepath = config.CKPT_OUT + '/saved-model-{epoch:03d}-{val_dice_coef:.5f}.hdf5'
+    
+    checkpoint_all = ModelCheckpoint(filepath,
+                                     monitor='val_dice_coef',
+                                     verbose=1,
+                                     save_best_only=False,
+                                     mode='max')
     
     training_generator = DataGeneratorUNet2D(input_shape=config.INPUT_SHAPE,
                                         output_shape=config.OUTPUT_SHAPE,
@@ -86,16 +119,14 @@ if config.MODEL_TRAINING == True:
                             validation_data = validation_generator,
                             validation_steps = (len(os.listdir(config.DIR_OUT + 'Augmented/Validation/' + 'masks/')))//(config.BATCH_SIZE),
                             epochs = config.EPOCHS,
+                            callbacks = [early_stop, checkpoint, checkpoint_all],
                             verbose = 1)
     
-    if not os.path.isdir(config.MODEL_OUT):
-        os.makedirs(config.MODEL_OUT)
-    
-    model_json = model.to_json()
-    with open( config.MODEL_OUT + 'Model.json', 'w' ) as json_file:
-        json_file.write(model_json)
-    model.save_weights(config.MODEL_OUT + 'Model.h5')
- 
-    #new_history=history.history
     with open( config.MODEL_OUT + 'Model_history.pkl', 'wb' ) as f:
         pickle.dump(history, f)
+        
+    if not os.path.isdir(config.FILE_CP_OUT):
+        os.makedirs(config.FILE_CP_OUT)
+    
+    cpFiles()
+    
