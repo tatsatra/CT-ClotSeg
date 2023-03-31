@@ -12,7 +12,6 @@ import numpy as np
 from tqdm import tqdm
 import random
 import matplotlib.pyplot as plt
-#import cv2
 import albumentations as A
 
 
@@ -112,4 +111,12 @@ def dataAug(cohort, targetSampleSize, augNos):
             if count >= targetSampleSize:
                 break
     
-    return None        
+    return None
+
+
+def cpFiles():
+    
+    shutil.copy(config.DIR_PATH + '/config.py' , config.FILE_CP_OUT + 'config.py')
+    shutil.copy(config.DIR_PATH + '/myModels/unet2D.py' , config.FILE_CP_OUT + 'unet2D.py')
+    
+    return None
